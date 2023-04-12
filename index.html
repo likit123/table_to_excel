@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>table to excel</title>
+</head>
+
+<body>
+  <button type="button" id="export-table" onclick="clickToExcel()">Export to XLSX</button>
+
+  <table id="tableA" border="1" style="margin-top:10px">
+    <tr>
+      <td>No.</td>
+      <td>จังหวัด</td>
+    </tr>
+    <tr>
+      <td>1.</td>
+      <td>เชียงใหม่</td>
+    </tr>
+    <tr>
+      <td>2.</td>
+      <td>ลำพูน</td>
+    </tr>
+    <tr>
+      <td>3.</td>
+      <td>แม่ฮ่องสอน</td>
+    </tr>
+  </table>
+
+
+  <script type="text/javascript" src="//unpkg.com/xlsx/dist/shim.min.js"></script>
+  <script type="text/javascript" src="//unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+
+  <script>
+    function clickToExcel() {
+      var wb = XLSX.utils.table_to_book(document.getElementById('tableA'), { raw: true });
+      XLSX.writeFile(wb, "report.xlsx");
+    }
+  </script>
+</body>
+
+</html>
